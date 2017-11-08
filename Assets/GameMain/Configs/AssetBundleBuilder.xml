@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UnityGameFramework>
+  <AssetBundleBuilder>
+    <Settings>
+      <InternalResourceVersion>1</InternalResourceVersion>
+      <WindowsSelected>True</WindowsSelected>
+      <MacOSXSelected>True</MacOSXSelected>
+      <IOSSelected>True</IOSSelected>
+      <AndroidSelected>True</AndroidSelected>
+      <WindowsStoreSelected>False</WindowsStoreSelected>
+      <ZipSelected>True</ZipSelected>
+      <RecordScatteredDependencyAssetsSelected>True</RecordScatteredDependencyAssetsSelected>
+      <UncompressedAssetBundleSelected>False</UncompressedAssetBundleSelected>
+      <DisableWriteTypeTreeSelected>False</DisableWriteTypeTreeSelected>
+      <DeterministicAssetBundleSelected>True</DeterministicAssetBundleSelected>
+      <ForceRebuildAssetBundleSelected>False</ForceRebuildAssetBundleSelected>
+      <IgnoreTypeTreeChangesSelected>False</IgnoreTypeTreeChangesSelected>
+      <AppendHashToAssetBundleNameSelected>False</AppendHashToAssetBundleNameSelected>
+      <ChunkBasedCompressionSelected>True</ChunkBasedCompressionSelected>
+      <BuildEventHandlerTypeName>
+      </BuildEventHandlerTypeName>
+      <OutputDirectory>/Users/temp/Documents/UGFTemplateBuilder</OutputDirectory>
+    </Settings>
+  </AssetBundleBuilder>
+</UnityGameFramework>

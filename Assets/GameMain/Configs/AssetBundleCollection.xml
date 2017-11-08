@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UnityGameFramework>
+  <AssetBundleCollection>
+    <AssetBundles>
+      <AssetBundle Name="Scenes" LoadType="0" Packed="False" />
+    </AssetBundles>
+    <Assets>
+      <Asset Guid="591043952775f48b4b13ef9ae679d417" AssetBundleName="Scenes" />
+    </Assets>
+  </AssetBundleCollection>
+</UnityGameFramework>
