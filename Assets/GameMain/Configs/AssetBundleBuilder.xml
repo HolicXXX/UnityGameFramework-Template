@@ -17,8 +17,7 @@
       <IgnoreTypeTreeChangesSelected>False</IgnoreTypeTreeChangesSelected>
       <AppendHashToAssetBundleNameSelected>False</AppendHashToAssetBundleNameSelected>
       <ChunkBasedCompressionSelected>True</ChunkBasedCompressionSelected>
-      <BuildEventHandlerTypeName>
-      </BuildEventHandlerTypeName>
+      <BuildEventHandlerTypeName>GameMain.Editor.CustomBuildEventHandler</BuildEventHandlerTypeName>
       <OutputDirectory>/Users/temp/Documents/UGFTemplateBuilder</OutputDirectory>
     </Settings>
   </AssetBundleBuilder>
