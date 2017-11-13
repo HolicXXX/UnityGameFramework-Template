@@ -4,10 +4,10 @@ using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
 namespace GameMain {
-	public class ProcedureLaunch : ProcedureBase {
+	public class ProcedureChangeScene : ProcedureBase {
 		public override bool UseNativeDialog {
 			get {
-				return true;
+				return false;
 			}
 		}
 
@@ -19,15 +19,11 @@ namespace GameMain {
 		protected override void OnEnter (ProcedureOwner procedureOwner)
 		{
 			base.OnEnter (procedureOwner);
-
-			//Init Language, Variant, Quality and SoundSetting
 		}
 
 		protected override void OnUpdate (ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
 		{
 			base.OnUpdate (procedureOwner, elapseSeconds, realElapseSeconds);
-
-			ChangeState<ProcedureSplash> (procedureOwner);
 		}
 
 		protected override void OnLeave (ProcedureOwner procedureOwner, bool isShutdown)

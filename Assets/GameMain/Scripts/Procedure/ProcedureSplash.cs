@@ -4,7 +4,7 @@ using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
 namespace GameMain {
-	public class ProcedureLaunch : ProcedureBase {
+	public class ProcedureSplash : ProcedureBase {
 		public override bool UseNativeDialog {
 			get {
 				return true;
@@ -20,14 +20,14 @@ namespace GameMain {
 		{
 			base.OnEnter (procedureOwner);
 
-			//Init Language, Variant, Quality and SoundSetting
+			//Add a splash Animation
 		}
 
 		protected override void OnUpdate (ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
 		{
 			base.OnUpdate (procedureOwner, elapseSeconds, realElapseSeconds);
 
-			ChangeState<ProcedureSplash> (procedureOwner);
+			ChangeState(procedureOwner, GameEntry.Base.EditorResourceMode ? typeof(ProcedurePreload) : typeof(ProcedureCheckVersion));
 		}
 
 		protected override void OnLeave (ProcedureOwner procedureOwner, bool isShutdown)
