@@ -19,6 +19,15 @@ namespace GameMain {
 		protected override void OnEnter (ProcedureOwner procedureOwner)
 		{
 			base.OnEnter (procedureOwner);
+
+			//stop sound
+			//hide entities
+			//unload scenes
+			//reset normal game speed
+			//get scene id from data
+			//get scene row from scene table
+			//load scene
+			//set all scene setting with scene row
 		}
 
 		protected override void OnUpdate (ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)

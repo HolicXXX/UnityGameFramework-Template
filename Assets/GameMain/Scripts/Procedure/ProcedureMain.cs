@@ -14,11 +14,15 @@ namespace GameMain {
 		protected override void OnInit (ProcedureOwner procedureOwner)
 		{
 			base.OnInit (procedureOwner);
+
+			//Add game with game mode
 		}
 
 		protected override void OnEnter (ProcedureOwner procedureOwner)
 		{
 			base.OnEnter (procedureOwner);
+
+			//change game mode and init
 		}
 
 		protected override void OnUpdate (ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
