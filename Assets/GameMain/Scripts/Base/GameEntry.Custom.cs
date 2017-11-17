@@ -15,10 +15,18 @@ namespace GameMain {
 			private set;
 		}
 
+		private static CoroutineComponent _coroutine;
+
+		public static MEC.Timing Coroutine
+		{
+			get{ return _coroutine.Instance; }
+		}
+
 		private static void InitCustomComponents()
 		{
-			Config = UnityGameFramework.Runtime.GameEntry.GetComponent<ConfigComponent>();
-			HPBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent>();
+			Config = UnityGameFramework.Runtime.GameEntry.GetComponent<ConfigComponent> ();
+			HPBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent> ();
+			_coroutine = UnityGameFramework.Runtime.GameEntry.GetComponent<CoroutineComponent> ();
 		}
 	}
 }
