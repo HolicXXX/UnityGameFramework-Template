@@ -16,7 +16,6 @@ A common Unity template Project base on UnityGameFramework.
 > * 前后端传输协议类型声明文件(即包类型)放在 **`Assets/GameMain/Scripts/Network/Packet/`** 下。
 > * UI逻辑脚本放在 **`Assets/GameMain/Scripts/UI/`** 内，继承 **`UGuiForm`** 类。
 > * 添加了 **`Unity-UI-Extensions`** 扩展脚本集，方便UI的制作，不用再从头造轮子。源项目：**[Unity-UI-Extensions](https://bitbucket.org/UnityUIExtensions/unity-ui-extensions)**
-> * 添加了 **[toLua]("https://github.com/topameng/tolua")** 扩展，暂时还未设置使用模板。
 > * 注意代码风格和格式，参考 **[UGF的Demo](https://github.com/EllanJiang/StarForce)**
 
 ## Still Updating...
