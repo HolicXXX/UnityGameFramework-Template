@@ -28,12 +28,19 @@ namespace GameMain {
 			private set;
 		}
 
+		public static WebsocketNetworkComponent WS 
+		{
+			get;
+			private set;
+		}
+
 		private static void InitCustomComponents()
 		{
 			Config = UnityGameFramework.Runtime.GameEntry.GetComponent<ConfigComponent> ();
 			HPBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent> ();
 			_coroutine = UnityGameFramework.Runtime.GameEntry.GetComponent<CoroutineComponent> ();
 			Character = UnityGameFramework.Runtime.GameEntry.GetComponent<CharacterComponent> ();
+			WS = UnityGameFramework.Runtime.GameEntry.GetComponent<WebsocketNetworkComponent> ();
 		}
 	}
 }
