@@ -154,16 +154,16 @@ namespace GameMain
         /// <param name="source">要反序列化的来源流。</param>
         /// <param name="customErrorData">用户自定义错误数据。</param>
         /// <returns>反序列化后的消息包。</returns>
-        public Packet DeserializePacket(Stream source, out object customErrorData)
-        {
+        public Packet DeserializePacket(IPacketHeader packetHeader, Stream source, out object customErrorData)
+		{
             // 注意：此函数并不在主线程调用！
             customErrorData = null;
-            Type packetType = GetServerToClientPacketType(m_CachedPacketHeader.Id);
+			Type packetType = GetServerToClientPacketType((packetHeader as SCPacketHeader).Id);
             if (packetType == null)
             {
                 PacketType pt = PacketType.Undefined;
                 int pid = 0;
-                GameEntry.Network.ParseOpCode(m_CachedPacketHeader.Id, out pt, out pid);
+				GameEntry.Network.ParseOpCode((packetHeader as SCPacketHeader).Id, out pt, out pid);
                 Log.Error(string.Format("Can not deserialize packet for packet type '{0}', packet id '{1}'.", pt.ToString(), pid.ToString()));
             }
 
