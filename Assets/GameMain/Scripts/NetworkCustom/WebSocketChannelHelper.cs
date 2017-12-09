@@ -2,11 +2,11 @@
 using System.IO;
 using System.Reflection;
 using System.Collections.Generic;
-using UnityEngine;
 using GameFramework;
 using GameFramework.Event;
 using ProtoBuf;
 using ProtoBuf.Meta;
+using Force.Crc32;
 
 namespace GameMain {
 	public class WebSocketChannelHelper : IWebSocketChannelHelper {
@@ -85,6 +85,8 @@ namespace GameMain {
 			using (MemoryStream pStream = new MemoryStream ()) {
 				pStream.Write (BitConverter.GetBytes (packetId), 0, 4);
 				RuntimeTypeModel.Default.Serialize (pStream, packet);
+				uint crc = Crc32Algorithm.Compute (pStream.GetBuffer (), 0, (int)pStream.Length);
+				pStream.Write (BitConverter.GetBytes (crc), 0, 4);
 				length = (int)pStream.Length;
 				stream.Write (BitConverter.GetBytes (length), 0, PacketHeaderLength);
 				stream.Write (pStream.ToArray (), 0, length);
@@ -107,8 +109,8 @@ namespace GameMain {
 			}
 			object ret = null;
 			using (MemoryStream stream = new MemoryStream (packetData)) {
-				int idLength = stream.Read (data, 0, sizeof(int));
-				if (idLength != sizeof(int)) {
+				int idLength = stream.Read (data, 0, PacketHeaderLength);
+				if (idLength != PacketHeaderLength) {
 					throw new GameFrameworkException ("Invalid Packet Id Length");
 				}
 				packetId = BitConverter.ToInt32 (data, 0);
@@ -116,8 +118,13 @@ namespace GameMain {
 				if (packetType == null) {
 					throw new GameFrameworkException ("Invalid Packet Id: " + packetId.ToString ());
 				}
-				ret = RuntimeTypeModel.Default.Deserialize (stream, null, packetType);
 
+				if (!Crc32Algorithm.IsValidWithCrcAtEnd (packetData, 0, length)) {
+					throw new GameFrameworkException ("Invalid PacketData with Crc32");
+				}
+
+				stream.SetLength (length - 4);
+				ret = RuntimeTypeModel.Default.Deserialize (stream, null, packetType);
 			}
 
 			return ret;

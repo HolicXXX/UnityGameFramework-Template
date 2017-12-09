@@ -20,19 +20,19 @@ namespace GameMain {
 		}
 
 		private void Start(){
-//			//Test code
-//			var channel = CreateWebSocketChannel ("test", new WebSocketChannelHelper ());
-//			channel.Connect ("ws://localhost:3000", "user", "pass");
-//			GameEntry.Event.Subscribe (WebSocketConnectedEventArgs.EventId, (sender, args) => {
-//				var cargs = args as WebSocketConnectedEventArgs;
-//				if(cargs.Channel.Name == "test"){
-//					channel.Send (new Protos.HeartBeat_Result (), (int)Protos.PacketType.HeartBeat);
-//					GameEntry.Event.Subscribe ((int)Protos.PacketType.HeartBeat, (s, a) => {
-//						var packet = a as WebSocketReceivedPacketEventArgs;
-//						Log.Info("received id: {0} , channel {1}, packet: {2}", packet.Id, packet.Channel, packet.Packet);
-//					});
-//				}
-//			});
+			////Test code
+			//var channel = CreateWebSocketChannel ("test", new WebSocketChannelHelper ());
+			//channel.Connect ("ws://localhost:3000", "user", "pass");
+			//GameEntry.Event.Subscribe (WebSocketConnectedEventArgs.EventId, (sender, args) => {
+			//	var cargs = args as WebSocketConnectedEventArgs;
+			//	if(cargs.Channel.Name == "test"){
+			//		channel.Send (new Protos.HeartBeat_Result (), (int)Protos.PacketType.HeartBeat);
+			//		GameEntry.Event.Subscribe ((int)Protos.PacketType.HeartBeat, (s, a) => {
+			//			var packet = a as WebSocketReceivedPacketEventArgs;
+			//			Log.Info("received id: {0} , channel {1}, packet: {2}", packet.Id, packet.Channel, packet.Packet);
+			//		});
+			//	}
+			//});
 		}
 
 		private void Update(){

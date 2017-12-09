@@ -443,7 +443,7 @@ namespace GameMain {
 				try{
 					stream.Position = 0;
 					int packetId;
-					object packet = m_NetworkChannelHelper.DeserializePacket(stream, out packetId);
+					object packet = m_NetworkChannelHelper.DeserializePacket(stream, out packetId);//true to test
 					if(packet != null){
 						GameEntry.Event.Fire(this, ReferencePool.Acquire<WebSocketReceivedPacketEventArgs>().Fill(this, packetId, packet));	
 					}
