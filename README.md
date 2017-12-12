@@ -17,6 +17,8 @@ A common Unity template Project base on UnityGameFramework.
 > * 如果使用的是WebSocket来进行前后端交互，则将protobuf生成的.cs文件放在 **`Assets/GameMain/Scripts/NetworkCustom/Protos`** 下, **`Assets/GameMain/Scripts/NetworkCustom/ProtoHandlers`** 下放各种实现的对后端消息进行处理的Handler。虽然支持WebSocket的通信，但是并不支持WebGL平台下的通信，还是有待扩充。
 > * UI逻辑脚本放在 **`Assets/GameMain/Scripts/UI/`** 内，继承 **`UGuiForm`** 类。
 > * 添加了 **`Unity-UI-Extensions`** 扩展脚本集，方便UI的制作，不用再从头造轮子。源项目：**[Unity-UI-Extensions](https://bitbucket.org/UnityUIExtensions/unity-ui-extensions)**
+> * 对于 **`xLua`** 的使用，可参考官方示例 **[xLua](https://github.com/Tencent/xLua)** , 注意：使用 **`[HotFix]`** 之前需添加 **`HOTFIX_ENABLE`** 到 "Edit > Project Settings > Player > Other Settings > Scripting Define Symbols"。
+（注意：各平台需要分别设置）
 > * 注意代码风格和格式，参考 **[UGF的Demo](https://github.com/EllanJiang/StarForce)**
 
 ## Still Updating...
