@@ -34,6 +34,12 @@ namespace GameMain {
 			private set;
 		}
 
+		public static HotFixComponent HotFix 
+		{
+			get;
+			private set;
+		}
+
 		private static void InitCustomComponents()
 		{
 			Config = UnityGameFramework.Runtime.GameEntry.GetComponent<ConfigComponent> ();
@@ -41,6 +47,7 @@ namespace GameMain {
 			_coroutine = UnityGameFramework.Runtime.GameEntry.GetComponent<CoroutineComponent> ();
 			Character = UnityGameFramework.Runtime.GameEntry.GetComponent<CharacterComponent> ();
 			WS = UnityGameFramework.Runtime.GameEntry.GetComponent<WebsocketNetworkComponent> ();
+			HotFix = UnityGameFramework.Runtime.GameEntry.GetComponent<HotFixComponent> ();
 		}
 	}
 }
