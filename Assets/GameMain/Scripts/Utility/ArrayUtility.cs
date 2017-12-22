@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Linq;
 
 namespace GameMain {
 	
@@ -308,8 +307,20 @@ namespace GameMain {
 			}
 
 			var random = RandomUtility.MakeRandom (seed);
-			Array.Sort (source, (a, b) => random.Next (0, 100) > 50 ? 1 : -1);
-			return source;
+			T [] ret = new T [source.Length];
+			Array.Copy (source, 0, ret, 0, source.Length);
+			Array.Sort (ret, (a, b) => random.Next (0, 100) > 50 ? 1 : -1);
+			return ret;
+		}
+
+		/// <summary>
+		/// Range the specified start, end and endIncluded.
+		/// </summary>
+		/// <returns>The range result array.</returns>
+		/// <param name="start">Start index.</param>
+		/// <param name="count">Array length</param>
+		public static int [] Range (int start, int count) {
+			return Enumerable.Range (start, count).ToArray ();
 		}
 	}
 }
