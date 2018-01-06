@@ -9,7 +9,7 @@ namespace GameMain
         {
             get
             {
-                return GameEntry.Network.GetOpCode(PacketType.ServerToClient, 1);
+                return 2;
             }
         }
 

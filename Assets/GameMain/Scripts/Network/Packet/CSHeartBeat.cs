@@ -4,14 +4,14 @@ using System;
 namespace GameMain
 {
     [Serializable, ProtoContract(Name = @"CSHeartBeat")]
-    public partial class CSHeartBeat : ClientToServerPacketBase
+    public partial class CSHeartBeat : CSPacketBase
     {
         public CSHeartBeat()
         {
 
         }
 
-        public override int PacketId
+        public override int Id
         {
             get
             {

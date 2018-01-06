@@ -1,16 +1,34 @@
-﻿namespace GameMain
-{
-    public abstract class PacketHeaderBase
-    {
-        public PacketHeaderBase(PacketType packetType, int packetId)
-        {
-            Id = GameEntry.Network.GetOpCode(packetType, packetId);
-        }
+﻿using GameFramework;
+using GameFramework.Network;
 
-        public int Id
-        {
-            get;
-            private set;
+namespace GameMain
+{
+	public abstract class PacketHeaderBase : IPacketHeader, IReference
+    {
+		public abstract PacketType PacketType {
+			get;
+		}
+
+		public int Id {
+			get;
+			set;
+		}
+
+		public int PacketLength {
+			get;
+			set;
+		}
+
+		public bool IsValid {
+			get {
+				return PacketType != PacketType.Undefined && Id > 0 && PacketLength >= 0;
+			}
+		}
+
+		public void Clear ()
+		{
+			Id = 0;
+			PacketLength = 0;
         }
     }
 }

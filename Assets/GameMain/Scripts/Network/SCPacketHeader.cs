@@ -1,21 +1,12 @@
-﻿using GameFramework.Network;
-using ProtoBuf;
-
+﻿
 namespace GameMain
 {
-    [ProtoContract]
-    public class SCPacketHeader : PacketHeaderBase, IPacketHeader
+    public class SCPacketHeader : PacketHeaderBase
     {
-        public SCPacketHeader(int packetId)
-            : base(PacketType.ServerToClient, packetId)
-        {
-
-        }
-
-        public int PacketLength
-        {
-            get;
-            set;
+		public override PacketType PacketType {
+			get {
+				return PacketType.ServerToClient;
+			}
         }
     }
 }
