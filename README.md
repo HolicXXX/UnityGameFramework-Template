@@ -1,4 +1,4 @@
-# UnityProjectWithUGF
+# UnityGameFramework's Template
 A common Unity template Project base on UnityGameFramework.
 
 ---
