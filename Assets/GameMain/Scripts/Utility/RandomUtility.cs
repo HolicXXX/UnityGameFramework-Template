@@ -5,6 +5,20 @@ namespace GameMain {
 	/// Random Utility.
 	/// </summary>
 	public static class RandomUtility {
+
+		private static Random _inst = null;
+		/// <summary>
+		/// The Random instance.
+		/// </summary>
+		public static Random RandomInst{
+			get {
+				if (_inst == null) {
+					_inst = MakeRandom ();
+				}
+				return _inst;
+			}
+		}
+
 		/// <summary>
 		/// Makes the seed.
 		/// </summary>
