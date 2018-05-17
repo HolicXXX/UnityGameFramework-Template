@@ -6,6 +6,8 @@ namespace GameMain
     [Serializable, ProtoContract(Name = @"CSHeartBeat")]
     public partial class CSHeartBeat : CSPacketBase
     {
+		public static readonly int EventId = typeof(CSHeartBeat).GetHashCode();
+
         public CSHeartBeat()
         {
 
@@ -15,7 +17,7 @@ namespace GameMain
         {
             get
             {
-                return 1;
+				return EventId;
             }
         }
 

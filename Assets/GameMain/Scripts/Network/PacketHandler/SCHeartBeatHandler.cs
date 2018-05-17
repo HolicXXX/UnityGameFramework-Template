@@ -9,7 +9,7 @@ namespace GameMain
         {
             get
             {
-                return 2;
+				return SCHeartBeat.EventId;
             }
         }
 
