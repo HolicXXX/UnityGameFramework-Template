@@ -11,10 +11,19 @@ namespace GameMain {
 			private set;
 		}
 
-		/// <summary>
-		/// 获取数据结点组件。
-		/// </summary>
-		public static DataNodeComponent DataNode
+        /// <summary>
+        /// 获取配置组件。
+        /// </summary>
+        public static ConfigComponent Config
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// 获取数据结点组件。
+        /// </summary>
+        public static DataNodeComponent DataNode
 		{
 			get;
 			private set;
@@ -167,7 +176,8 @@ namespace GameMain {
 		private static void InitBuiltinComponents()
 		{
 			Base = UnityGameFramework.Runtime.GameEntry.GetComponent<BaseComponent>();
-			DataNode = UnityGameFramework.Runtime.GameEntry.GetComponent<DataNodeComponent>();
+			Config = UnityGameFramework.Runtime.GameEntry.GetComponent<ConfigComponent>();
+            DataNode = UnityGameFramework.Runtime.GameEntry.GetComponent<DataNodeComponent>();
 			DataTable = UnityGameFramework.Runtime.GameEntry.GetComponent<DataTableComponent>();
 			Debugger = UnityGameFramework.Runtime.GameEntry.GetComponent<DebuggerComponent>();
 			Download = UnityGameFramework.Runtime.GameEntry.GetComponent<DownloadComponent>();

@@ -1,9 +1,5 @@
 {
   "GameVersion": "0.1.0",
-  "InternalApplicationVersion": 1,
-  "CheckVersionUrl": "http://gameframework.cn/starforce/version.txt",
-  "StandaloneAppUrl": "http://gameframework.cn",
-  "IosAppUrl": "http://gameframework.cn",
-  "AndroidAppUrl": "http://gameframework.cn",
-  "END_OF_JSON": ""
+  "InternalGameVersion": 1,
+  "CheckVersionUrl": "http://gameframework.cn/starforce/version.txt"
 }

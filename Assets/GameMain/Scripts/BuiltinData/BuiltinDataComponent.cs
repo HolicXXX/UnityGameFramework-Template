@@ -4,7 +4,7 @@ using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
-    public class ConfigComponent : GameFrameworkComponent
+    public class BuiltinDataComponent : GameFrameworkComponent
     {
         [SerializeField]
         private DeviceModelConfig m_DeviceModelConfig = null;
@@ -47,9 +47,6 @@ namespace GameMain
                 Log.Warning("Parse build info failure.");
                 return;
             }
-
-            GameEntry.Base.GameVersion = GameEntry.Config.BuildInfo.GameVersion;
-			GameEntry.Base.InternalApplicationVersion = GameEntry.Config.BuildInfo.InternalApplicationVersion;
         }
 
         public void InitDefaultDictionary()

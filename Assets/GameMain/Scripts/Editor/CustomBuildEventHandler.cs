@@ -8,7 +8,15 @@ namespace GameMain.Editor
 {
     public sealed class CustomBuildEventHandler : IBuildEventHandler
     {
-        public void PreProcessBuildAll(string productName, string companyName, string gameIdentifier,
+        public bool ContinueOnFailure
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public void PreprocessAllPlatforms(string productName, string companyName, string gameIdentifier,
             string applicableGameVersion, int internalResourceVersion, string unityVersion, BuildAssetBundleOptions buildOptions, bool zip,
             string outputDirectory, string workingPath, string outputPackagePath, string outputFullPath, string outputPackedPath, string buildReportPath)
         {
@@ -27,21 +35,21 @@ namespace GameMain.Editor
             Utility.Path.RemoveEmptyDirectory(streamingAssetsPath);
         }
 
-        public void PostProcessBuildAll(string productName, string companyName, string gameIdentifier,
+        public void PostprocessAllPlatforms(string productName, string companyName, string gameIdentifier,
             string applicableGameVersion, int internalResourceVersion, string unityVersion, BuildAssetBundleOptions buildOptions, bool zip,
             string outputDirectory, string workingPath, string outputPackagePath, string outputFullPath, string outputPackedPath, string buildReportPath)
         {
 
         }
 
-        public void PreProcessBuild(BuildTarget buildTarget, string workingPath, string outputPackagePath, string outputFullPath, string outputPackedPath)
+        public void PreprocessPlatform(Platform platform, string workingPath, string outputPackagePath, string outputFullPath, string outputPackedPath)
         {
 
         }
 
-        public void PostProcessBuild(BuildTarget buildTarget, string workingPath, string outputPackagePath, string outputFullPath, string outputPackedPath)
+        public void PostprocessPlatform(Platform platform, string workingPath, string outputPackagePath, string outputFullPath, string outputPackedPath, bool isSuccess)
         {
-            if (buildTarget != BuildTarget.StandaloneWindows)
+            if (platform != Platform.Windows)
             {
                 return;
             }

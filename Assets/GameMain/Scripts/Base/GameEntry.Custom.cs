@@ -2,14 +2,14 @@
 
 namespace GameMain {
 	public partial class GameEntry {
-		//This is where custom component lists
-		public static ConfigComponent Config
-		{
-			get;
-			private set;
-		}
+        //This is where custom component lists
+        public static BuiltinDataComponent BuiltinData
+        {
+            get;
+            private set;
+        }
 
-		public static HPBarComponent HPBar
+        public static HPBarComponent HPBar
 		{
 			get;
 			private set;
@@ -42,7 +42,7 @@ namespace GameMain {
 
 		private static void InitCustomComponents()
 		{
-			Config = UnityGameFramework.Runtime.GameEntry.GetComponent<ConfigComponent> ();
+            BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent> ();
 			HPBar = UnityGameFramework.Runtime.GameEntry.GetComponent<HPBarComponent> ();
 			_coroutine = UnityGameFramework.Runtime.GameEntry.GetComponent<CoroutineComponent> ();
 			Character = UnityGameFramework.Runtime.GameEntry.GetComponent<CharacterComponent> ();
