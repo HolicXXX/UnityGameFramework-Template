@@ -13,7 +13,7 @@ namespace GameMain {
 	public class WebSocketChannelHelper : IWebSocketChannelHelper {
 
 		private IWebSocketChannel m_networkChannel;
-
+		private readonly MemoryStream m_CachedStream = new MemoryStream(1024 * 8);
 		private Dictionary<string, Type> m_packetTypeDict;
 		private Dictionary<Protos.PacketType, string> m_packetNamePrefixDict;
 		private List<ProtoHandlerBase> m_packetHandlerList;
@@ -81,7 +81,9 @@ namespace GameMain {
 				throw new GameFrameworkException ("Invalid Packet Type to Serialize");
 			}
 
-			MemoryStream stream = new MemoryStream ();
+			m_CachedStream.SetLength(m_CachedStream.Capacity);
+			m_CachedStream.Position = 0L;
+
 			int length = 0;
 			using (MemoryStream pStream = new MemoryStream ()) {
 				pStream.Write (BitConverter.GetBytes (packetId), 0, 4);
@@ -89,11 +91,11 @@ namespace GameMain {
 				uint crc = Crc32Algorithm.Compute (pStream.GetBuffer (), 0, (int)pStream.Length);
 				pStream.Write (BitConverter.GetBytes (crc), 0, 4);
 				length = (int)pStream.Length;
-				stream.Write (BitConverter.GetBytes (length), 0, PacketHeaderLength);
-				stream.Write (pStream.ToArray (), 0, length);
+				m_CachedStream.Write (BitConverter.GetBytes (length), 0, PacketHeaderLength);
+				m_CachedStream.Write (pStream.ToArray (), 0, length);
 			}
 
-			return stream.ToArray ();
+			return m_CachedStream.ToArray ();
 		}
 
 		public object DeserializePacket (Stream source, out int packetId, bool request = false){

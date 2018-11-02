@@ -154,11 +154,12 @@ namespace GameMain
         /// <summary>
         /// 反序列化消息包。
         /// </summary>
+        /// <param name="packetHeader">消息包头。</param>
         /// <param name="source">要反序列化的来源流。</param>
         /// <param name="customErrorData">用户自定义错误数据。</param>
         /// <returns>反序列化后的消息包。</returns>
         public Packet DeserializePacket(IPacketHeader packetHeader, Stream source, out object customErrorData)
-		{
+        {
             // 注意：此函数并不在主线程调用！
             customErrorData = null;
 
@@ -172,7 +173,7 @@ namespace GameMain
             Packet packet = null;
             if (scPacketHeader.IsValid)
             {
-                Type packetType = GetServerToClientPacketType (scPacketHeader.Id);
+                Type packetType = GetServerToClientPacketType(scPacketHeader.Id);
                 if (packetType != null)
                 {
                     packet = (Packet)RuntimeTypeModel.Default.DeserializeWithLengthPrefix(source, ReferencePool.Acquire(packetType), packetType, PrefixStyle.Fixed32, 0);
