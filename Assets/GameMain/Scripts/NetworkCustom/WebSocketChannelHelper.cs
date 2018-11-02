@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Collections.Generic;
+using UnityGameFramework.Runtime;
 using GameFramework;
 using GameFramework.Event;
 using ProtoBuf;
