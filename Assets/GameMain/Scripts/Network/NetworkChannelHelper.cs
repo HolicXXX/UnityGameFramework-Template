@@ -132,7 +132,7 @@ namespace GameMain
             ReferencePool.Release(packetHeader);
 
             Serializer.SerializeWithLengthPrefix(m_CachedStream, packet, PrefixStyle.Fixed32);
-            ReferencePool.Release(packet.GetType(), packet);
+            ReferencePool.Release(packet);
 
             m_CachedStream.WriteTo(destination);
             return true;
