@@ -4,7 +4,6 @@ using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
-	[XLua.LuaCallCSharp]
 	public class HotFixComponent : GameFrameworkComponent
 	{
 		

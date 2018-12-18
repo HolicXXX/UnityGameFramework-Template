@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections.Generic;
 
 #if UNITY_5_5_OR_NEWER
@@ -1728,20 +1729,20 @@ namespace MEC
         }
 
         /// <summary>
-        /// Use the command "yield return Timing.WaitUntilDone(wwwObject);" to pause the current 
-        /// coroutine until the wwwObject is done.
+        /// Use the command "yield return Timing.WaitUntilDone(request);" to pause the current 
+        /// coroutine until the request is done.
         /// </summary>
-        /// <param name="wwwObject">The www object to pause for.</param>
-        public static float WaitUntilDone(WWW wwwObject)
+        /// <param name="request">The unity web request object to pause for.</param>
+        public static float WaitUntilDone(UnityWebRequest request)
         {
-            if (wwwObject == null || wwwObject.isDone) return 0f;
-            ReplacementFunction = (input, tag) => _StartWhenDone(wwwObject, input);
+            if (request == null || request.isDone) return 0f;
+            ReplacementFunction = (input, tag) => _StartWhenDone(request, input);
             return float.NaN;
         }
 
-        private static IEnumerator<float> _StartWhenDone(WWW www, IEnumerator<float> pausedProc)
+        private static IEnumerator<float> _StartWhenDone(UnityWebRequest request, IEnumerator<float> pausedProc)
         {
-            while (!www.isDone)
+            while (!request.isDone)
                 yield return WaitForOneFrame;
 
             ReplacementFunction = delegate { return pausedProc; };

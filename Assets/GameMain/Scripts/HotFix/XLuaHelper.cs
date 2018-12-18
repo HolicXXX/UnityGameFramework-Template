@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XLua;
 
 namespace GameMain {
 	public class XLuaHelper : IHotFixHelper
 	{
-		public LuaEnv Main {
+		public Object Main {
 			get;
 			private set;
 		}
@@ -27,21 +26,21 @@ namespace GameMain {
 
 		public void Initialize ()
 		{
-			Main = new LuaEnv ();
 			//TODO
+			//Main = new LuaEnv ();
 
 			_enable = true;
 		}
 
 		public void Update (float elapsedTime, float unscaledElapsedTime)
 		{
-			Main.Tick ();
+			//Main.Tick ();
 		}
 
 		public void ShutDown ()
 		{
 			_enable = false;
-			Main.Dispose (true);
+			//Main.Dispose (true);
 			Main = null;
 		}
 		#endregion

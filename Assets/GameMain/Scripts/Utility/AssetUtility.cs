@@ -1,20 +1,22 @@
-﻿namespace GameMain
+﻿using GameFramework;
+
+namespace GameMain
 {
     public static class AssetUtility
     {
-        public static string GetConfigAsset(string assetName)
+        public static string GetConfigAsset(string assetName, LoadType loadType)
         {
-            return string.Format("Assets/GameMain/Configs/{0}.txt", assetName);
+            return Utility.Text.Format("Assets/GameMain/Configs/{0}.{1}", assetName, loadType == LoadType.Text ? "txt" : "bytes");
         }
 
-        public static string GetDataTableAsset(string assetName)
+        public static string GetDataTableAsset(string assetName, LoadType loadType)
         {
-            return string.Format("Assets/GameMain/DataTables/{0}.txt", assetName);
+            return Utility.Text.Format("Assets/GameMain/DataTables/{0}.{1}", assetName, loadType == LoadType.Text ? "txt" : "bytes");
         }
 
-        public static string GetDictionaryAsset(string assetName)
+        public static string GetDictionaryAsset(string assetName, LoadType loadType)
         {
-            return string.Format("Assets/GameMain/Localization/{0}/Dictionaries/{1}.xml", GameEntry.Localization.Language.ToString(), assetName);
+            return Utility.Text.Format("Assets/GameMain/Localization/{0}/Dictionaries/{1}.{2}", GameEntry.Localization.Language.ToString(), assetName, loadType == LoadType.Text ? "xml" : "bytes");
         }
 
         public static string GetFontAsset(string assetName)

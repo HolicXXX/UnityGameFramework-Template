@@ -9,7 +9,7 @@ namespace GameMain
         private const string DataRowClassPrefixName = "GameMain.DR";
         private static readonly string[] ColumnSplit = new string[] { "\t" };
 
-        public static void LoadDataTable(this DataTableComponent dataTableComponent, string dataTableName, object userData = null)
+        public static void LoadDataTable(this DataTableComponent dataTableComponent, string dataTableName, LoadType loadType, object userData = null)
         {
             if (string.IsNullOrEmpty(dataTableName))
             {
@@ -34,12 +34,12 @@ namespace GameMain
             }
 
             string dataTableNameInType = splitNames.Length > 1 ? splitNames[1] : null;
-            dataTableComponent.LoadDataTable(dataRowType, dataTableName, dataTableNameInType, AssetUtility.GetDataTableAsset(dataTableName), userData);
+            dataTableComponent.LoadDataTable(dataRowType, dataTableName, dataTableNameInType, AssetUtility.GetDataTableAsset(dataTableName, loadType), loadType, Constant.AssetPriority.DataTableAsset, userData);
         }
 
-        public static string[] SplitDataRow(string dataRowText)
+        public static string[] SplitDataRow(GameFrameworkSegment<string> dataRowSegment)
         {
-            return dataRowText.Split(ColumnSplit, StringSplitOptions.None);
+            return dataRowSegment.Source.Substring(dataRowSegment.Offset, dataRowSegment.Length).Split(ColumnSplit, StringSplitOptions.None);
         }
     }
 }

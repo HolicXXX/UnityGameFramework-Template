@@ -1,20 +1,24 @@
-﻿using GameFramework.DataTable;
-using System.Collections.Generic;
+﻿using GameFramework;
+using UnityGameFramework.Runtime;
 
 namespace GameMain
 {
     /// <summary>
     /// 音乐配置表。
     /// </summary>
-    public class DRMusic : IDataRow
+    public class DRMusic : DataRowBase
     {
+        private int m_Id = 0;
+
         /// <summary>
         /// 音乐编号。
         /// </summary>
-        public int Id
+        public override int Id
         {
-            get;
-            protected set;
+            get
+            {
+                return m_Id;
+            }
         }
 
         /// <summary>
@@ -26,19 +30,16 @@ namespace GameMain
             private set;
         }
 
-        public void ParseDataRow(string dataRowText)
+        public override bool ParseDataRow(GameFrameworkSegment<string> dataRowSegment)
         {
-            string[] text = DataTableExtension.SplitDataRow(dataRowText);
+            string[] text = DataTableExtension.SplitDataRow(dataRowSegment);
             int index = 0;
             index++;
-            Id = int.Parse(text[index++]);
+            m_Id = int.Parse(text[index++]);
             index++;
             AssetName = text[index++];
-        }
 
-        private void AvoidJIT()
-        {
-            new Dictionary<int, DRMusic>();
+            return true;
         }
     }
 }

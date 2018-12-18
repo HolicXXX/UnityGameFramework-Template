@@ -5,7 +5,7 @@ namespace GameMain
 {
     public static class LocalizationExtension
     {
-        public static void LoadDictionary(this LocalizationComponent localizationComponent, string dictionaryName, object userData = null)
+        public static void LoadDictionary(this LocalizationComponent localizationComponent, string dictionaryName, LoadType loadType, object userData = null)
         {
             if (string.IsNullOrEmpty(dictionaryName))
             {
@@ -13,7 +13,7 @@ namespace GameMain
                 return;
             }
 
-            localizationComponent.LoadDictionary(dictionaryName, AssetUtility.GetDictionaryAsset(dictionaryName), userData);
+            localizationComponent.LoadDictionary(dictionaryName, AssetUtility.GetDictionaryAsset(dictionaryName, loadType), loadType, Constant.AssetPriority.DictionaryAsset, userData);
         }
     }
 }
